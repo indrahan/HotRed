@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>This is the localhost site to test database connection using MVC+Razor.</p>
+
+@using (Html.BeginForm("", "Home", FormMethod.Post,
+    new { enctype = "multipart/form-data" } ))
+ {
+    @Html.AntiForgeryToken()
+<h1>TESTING UPLOAD</h1>
+    <fieldset>
+        <legend>Upload a file</legend>
+        <div class="editor-field">
+            @Html.TextBox("file", "", new { type = "file" })
+        </div>
+       <div class="editor-field">
+            <input type="submit" value="Upload" />
+        </div>
+    </fieldset>
+}
