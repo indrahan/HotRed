@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+<h3>@ViewData["Message"]</h3>
+<hr>
+<h4>Click here to manage:</h4>
+<a asp-controller="Product" asp-action="Index"> <button>products</button></a>
+<a asp-controller="Category" asp-action="Index"> <button>categories</button></a>
+<a asp-controller="SubCategory" asp-action="Index"> <button>subcategories</button></a>
+
+

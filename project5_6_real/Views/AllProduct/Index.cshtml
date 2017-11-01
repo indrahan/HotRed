@@ -1,0 +1,51 @@
+@model IEnumerable<project5_6.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br>
+@using (Html.BeginForm())
+{
+    <p>Find by brand: @Html.TextBox("SearchString")  
+    <input type="submit" value="Search" /></p>
+}
+
+@using (Html.BeginForm()) {
+    <text>ProductBrand: </text>@Html.DropDownList("SearchString", new SelectList(ViewBag.Product))
+    <input type="submit" value="Search"/>
+}
+
+<br>
+<div class ="container">
+    <div class="row">@foreach (var item in Model) {
+<div class="col-sm-4">
+    <div class="product-item">
+        <div class="pi-img-wrapper">
+        </div>
+        <div class="table">
+                <a asp-controller="Clicked" name="submit" asp-action="" asp-route-id="@item.ImageId"><img src="@Url.Content("~/images/" + item.ImageId + ".jpg")" style="width:400;height:240px" class="img-responsive"></a>
+                <br>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="techSpecRow"><th colspan="2">Product Details</th></tr>
+                    <tr class="techSpecRow"><td class="techSpecTD1">Brand: </td><td class="techSpecTD2">@Html.DisplayFor(modelItem => item.ProductBrand)</td></tr>
+                    <tr class="techSpecRow"><td class="techSpecTD1">Model:</td><td class="techSpecTD2">@Html.DisplayFor(modelItem => item.ProductName)</td></tr>
+                    <tr class="techSpecRow"><td class="techSpecTD1">Small description:</td><td class="techSpecTD2">@Html.DisplayFor(modelItem => item.ProductDesc)</td></tr>
+                    </tbody>
+				</table>
+                <!-- <p><h4>@Html.DisplayFor(modelItem => item.ProductName) - @Html.DisplayFor(modelItem => item.ProductBrand) - @Html.DisplayFor(modelItem => item.ImageId)</h4></p>
+                <p>@Html.DisplayFor(modelItem => item.ProductDesc)</p>
+                <div class="pi-price">$290.00</div> -->
+                <!-- action als je action wilt uitvoeren in zelfde controller, controller als je van controller wilt swappen. -->
+                <!-- <a asp-controller="Product" asp-action="Clicked"> <button>View more info in /product/clicked</button> </a> -->
+                <a asp-controller="Clicked" name="submit" asp-action="" asp-route-id="@item.ImageId"> <button>View more info in /clicked/</button> </a>
+                <hr>
+                <!-- <a asp-action="Clicked" asp-route-id="@item.ImageId">View more info</a>
+                <a asp-controller="Clicked" name="imageId" value="1">View more info</a> -->
+                <br>
+        
+            </div>    
+    </div>
+</div> }
+</div>
+</div>

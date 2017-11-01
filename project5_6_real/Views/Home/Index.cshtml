@@ -1,0 +1,68 @@
+﻿@model IEnumerable<project5_6.Models.Product>
+
+@{
+    ViewData["Title"] = "Home Page 2";
+}
+<h1><center>Welcome to HotRed</center></h1>
+<hr>
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+		<!-- Website CSS style -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&subset=latin-ext,vietnamese" rel="stylesheet">
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="product.css">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=latin-ext,vietnamese" rel="stylesheet">
+
+
+		<title>Home page </title>
+	</head>
+	<body>
+		<div class="container">
+		<h4>NEW COLLECTION</h4>
+	<div class="row">@foreach (var item in Model){
+	
+    	<!-- BEGIN PRODUCTS -->
+  		<div class="col-md-4 col-sm-6">
+    		<span class="thumbnail">
+                <img src="@Url.Content("~/images/" + item.ImageId + ".jpg")" style="width:400px;height:240px" class="img-responsive">
+      			<h4>@Html.DisplayFor(modelItem => item.ProductName) - @Html.DisplayFor(modelItem => item.ProductBrand)</h4>
+      			<div class="ratings">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </div>
+      			<p>@Html.DisplayFor(modelItem => item.ProductDesc)</p>
+      			<hr class="line">
+      			<div class="row">
+      				<div class="col-md-6 col-sm-6">
+      					<p class="price">$29,90</p>
+      				</div>
+      				<div class="col-md-6 col-sm-6">
+      				 <a asp-controller="Clicked" name="submit" asp-action="" asp-route-id="@item.ImageId"> <button class="btn btn-info right" > BUY ITEM</button></a>
+      				</div>
+      				
+      			</div>
+    		</span>
+            
+  		</div>
+          }
+		<!-- END PRODUCTS -->
+	</div>
+</div><!-------container----->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
