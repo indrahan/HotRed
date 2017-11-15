@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceRoot}/WebApplication1/bin/Debug/netcoreapp2.0/WebApplication1.dll",
+            "program": "${workspaceRoot}/bin/Debug/netcoreapp2.0/WebApplication1.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/WebApplication1",
+            "cwd": "${workspaceRoot}",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
