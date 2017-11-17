@@ -1,15 +1,23 @@
-﻿@model IEnumerable<project5_6.Models.Product>
+﻿@model IEnumerable<project5_6.Models.Laptop>
 
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1><center>Welcome to HotRed</center></h1>
+<h1><center>Welcome to Sphere</center></h1>
+@using (Html.BeginForm()) {<p><center>@Html.TextBox("SearchString") <input type="submit" value="Search" /></center></p>}           
 <hr>
+<!-- <center><input id="txtAutoComplete" list="dlAutoComplete" type="text"/></center>
+<datalist id="dlAutoComplete"> 
+	<option value="Asus" />
+	<option value="LENOVO" />
+	<option value="HP" />
+	<option value="MACBOOK" />	
+	<option value="ACER" />
+</datalist> -->
 <!DOCTYPE html>
 <html lang="en">
     <head> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 
 		<!-- Website CSS style -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,34 +33,14 @@
 	</head>
 	<body>
 		<div class="container">
-		<h4>NEW COLLECTION</h4>
 	<div class="row">@foreach (var item in Model){
 	
     	<!-- BEGIN PRODUCTS -->
   		<div class="col-md-4 col-sm-6">
     		<span class="thumbnail">
-                <img src="@Url.Content("~/images/" + item.ImageId + ".jpg")" style="width:400px;height:240px" class="img-responsive">
-      			<h4>@Html.DisplayFor(modelItem => item.ProductName) - @Html.DisplayFor(modelItem => item.ProductBrand)</h4>
-      			<div class="ratings">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </div>
-      			<p>@Html.DisplayFor(modelItem => item.ProductDesc)</p>
-      			<hr class="line">
-      			<div class="row">
-      				<div class="col-md-6 col-sm-6">
-      					<p class="price">$29,90</p>
-      				</div>
-      				<div class="col-md-6 col-sm-6">
-      				 <a asp-controller="Clicked" name="submit" asp-action="" asp-route-id="@item.ImageId"> <button class="btn btn-info right" > BUY ITEM</button></a>
-      				</div>
-      				
-      			</div>
-    		</span>
-            
+                <a asp-controller="ClickedLaptop" name="submit" asp-action="" asp-route-id="@item.image_id"><img src="@Url.Content("~/images/" + item.image_id + ".jpg")" style="width:300;height:240px" class="img-responsive"></a>
+      			<center><h4>@Html.DisplayFor(modelItem => item.brand) - @Html.DisplayFor(modelItem => item.model_name)</h4></center>	
+    		</span>        
   		</div>
           }
 		<!-- END PRODUCTS -->

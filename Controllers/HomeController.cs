@@ -22,11 +22,20 @@ namespace project5_6.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var webContext = _context.Product.Include(p => p.SubCategory).Take(6);
+            var webContext = _context.Laptop.Take(6);
+            var webContext2 = _context.Laptop.Where(p => p.brand.Contains(searchString));
 
-            return View(await webContext.ToListAsync());
+            if (searchString == null)
+            {
+                return View(await webContext.ToListAsync());
+            }
+            else
+            {
+                return View(await webContext2.ToListAsync());
+
+            }
         }
 
         public IActionResult About()

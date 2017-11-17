@@ -21,7 +21,7 @@ namespace project5_6.Controllers
         }
         public async Task<IActionResult> Index(int id)
         {
-            var webContext = _context.Product.Where(p => p.ImageId.Equals(id));
+            var webContext = _context.Product.Where(p => p.Id.Equals(id));
 
             return View(await webContext.ToListAsync());
         }

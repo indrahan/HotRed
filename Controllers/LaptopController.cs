@@ -10,38 +10,24 @@ using project5_6.Models;
 
 namespace project5_6.Controllers
 {
-    public class AllProductController : Controller
+    public class LaptopController : Controller
     {
         private readonly WebContext _context;
 
-        public AllProductController(WebContext context)
+        public LaptopController(WebContext context)
         {
             _context = context;
         }
 
-        // GET: Product
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Laptop
+        public async Task<IActionResult> Index()
         {
-            
-            var webContext = _context.Laptop.Include(p => p.category);
-            var webContext2 = _context.Laptop.Where(p => p.brand.Contains(searchString));
-            ViewBag.laptop = (from x in _context.Laptop
+                        ViewBag.laptop = (from x in _context.Laptop
                                select x.brand).Distinct();
-            // TempData werkt niet want moet heletijd server restarten 
-            // TempData["Message"] = "3";
-            
-            if (searchString == null)
-            {
-                return View(await webContext.ToListAsync());
-            }
-            else
-            {
-                return View(await webContext2.ToListAsync());
-
-            }
+            return View(await _context.Laptop.ToListAsync());
         }
 
-        // GET: Product/Details/5
+        // GET: Laptop/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,42 +35,39 @@ namespace project5_6.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
-                .Include(p => p.SubCategory)
+            var laptop = await _context.Laptop
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (laptop == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(laptop);
         }
 
-        // GET: Product/Create
+        // GET: Laptop/Create
         public IActionResult Create()
         {
-            ViewData["SubCategoryId"] = new SelectList(_context.Set<SubCategory>(), "Id", "Id");
             return View();
         }
 
-        // POST: Product/Create
+        // POST: Laptop/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ImageId,ProductBrand,ProductName,ProductDesc,SubCategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,date_added,image_id,category,brand,model_name,description,price,screen_size,panel_type,keyboard_layout,operating_system,processor,graphic_card,ram,main_storage,main_storage_type,extra_storage,webcam,hdmi,touchscreen,dvd_drive,staff_picked,recommended_purpose")] Laptop laptop)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(laptop);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubCategoryId"] = new SelectList(_context.Set<SubCategory>(), "Id", "Id", product.SubCategoryId);
-            return View(product);
+            return View(laptop);
         }
 
-        // GET: Product/Edit/5
+        // GET: Laptop/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,23 +75,22 @@ namespace project5_6.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.SingleOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            var laptop = await _context.Laptop.SingleOrDefaultAsync(m => m.Id == id);
+            if (laptop == null)
             {
                 return NotFound();
             }
-            ViewData["SubCategoryId"] = new SelectList(_context.Set<SubCategory>(), "Id", "Id", product.SubCategoryId);
-            return View(product);
+            return View(laptop);
         }
 
-        // POST: Product/Edit/5
+        // POST: Laptop/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ImageId,ProductBrand,ProductName,ProductDesc,SubCategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,date_added,image_id,category,brand,model_name,description,price,screen_size,panel_type,keyboard_layout,operating_system,processor,graphic_card,ram,main_storage,main_storage_type,extra_storage,webcam,hdmi,touchscreen,dvd_drive,staff_picked,recommended_purpose")] Laptop laptop)
         {
-            if (id != product.Id)
+            if (id != laptop.Id)
             {
                 return NotFound();
             }
@@ -117,12 +99,12 @@ namespace project5_6.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(laptop);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!LaptopExists(laptop.Id))
                     {
                         return NotFound();
                     }
@@ -133,11 +115,10 @@ namespace project5_6.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubCategoryId"] = new SelectList(_context.Set<SubCategory>(), "Id", "Id", product.SubCategoryId);
-            return View(product);
+            return View(laptop);
         }
 
-        // GET: Product/Delete/5
+        // GET: Laptop/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,31 +126,30 @@ namespace project5_6.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
-                .Include(p => p.SubCategory)
+            var laptop = await _context.Laptop
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (laptop == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(laptop);
         }
 
-        // POST: Product/Delete/5
+        // POST: Laptop/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Product.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Product.Remove(product);
+            var laptop = await _context.Laptop.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Laptop.Remove(laptop);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool LaptopExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Laptop.Any(e => e.Id == id);
         }
     }
 }

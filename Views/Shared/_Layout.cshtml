@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HotRed</title>
+    <title>@ViewData["Title"] - Sphere</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -20,17 +20,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">HotRed</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Sphere</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><img src="~/images/logo.png" class="img-circle" height="50" width="50" /> </li>   
+                    <li><img src="~/images/logo2.png" class="img-circle" height="50" width="50" /> </li>   
                 </ul>
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     @if (User.IsInRole("Administrator")){
                     <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>}
-                    <li><a asp-area="" asp-controller="AllProduct" asp-action="Index">Show all products</a></li>
+                    <li><a asp-area="" asp-controller="Laptop" asp-action="Index">Show all products</a></li>
+                    <!-- <li>@using (Html.BeginForm()) {<p><center>@Html.TextBox("SearchString") <input type="submit" value="Search" /></center></p>}</li> -->
                     <!-- <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li> -->
                 </ul>
@@ -42,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy;HotRed 2017</p>
+            <p>&copy;Sphere 2017</p>
         </footer>
     </div>
 

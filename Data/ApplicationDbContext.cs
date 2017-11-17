@@ -28,5 +28,7 @@ namespace project5_6.Data
         public DbSet<project5_6.Models.Category> Category { get; set; }
 
         public DbSet<project5_6.Models.SubCategory> SubCategory { get; set; }
+
+        public DbSet<project5_6.Models.Laptop> Laptop { get; set; }
     }
 }
