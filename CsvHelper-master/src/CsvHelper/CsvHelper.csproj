@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Assembly -->
+		<AssemblyTitle>CsvHelper</AssemblyTitle>
+		<Description>A library for reading and writing CSV files. Extremely fast, flexible, and easy to use. Supports reading and writing of custom class objects.</Description>
+		<Copyright>Copyright © 2009-2017 Josh Close and Contributors</Copyright>
+		<Authors>Josh Close</Authors>
+
+		<!-- Build -->
+		<Version>6.0.0</Version>
+		<FileVersion>6.0.0.0</FileVersion>
+		<AssemblyVersion>6.0.0.0</AssemblyVersion>
+		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<LangVersion>7.1</LangVersion>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<AssemblyName>CsvHelper</AssemblyName>
+
+		<!-- Sign -->
+		<AssemblyOriginatorKeyFile>CsvHelper.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+
+		<!-- NuGet -->
+		<PackageId>CsvHelper</PackageId>
+		<PackageTags>csv;csvhelper;comma;separated;value;delimited</PackageTags>
+		<PackageReleaseNotes>http://joshclose.github.io/CsvHelper/#change-log</PackageReleaseNotes>
+		<PackageIconUrl>https://raw.github.com/JoshClose/CsvHelper/master/logo/Comma-Small.png</PackageIconUrl>
+		<PackageProjectUrl>https://github.com/JoshClose/CsvHelper</PackageProjectUrl>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/JoshClose/CsvHelper/master/LICENSE.txt</PackageLicenseUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<RepositoryUrl>https://github.com/JoshClose/CsvHelper</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+		<PackageReference Include="Microsoft.CSharp" Version="4.4.0" />
+		<PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+		<Reference Include="Microsoft.CSharp" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="CsvFieldReader.cs.bak" />
+		<None Remove="CsvParser.cs.bak" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="CsvFieldReader.tt">
+	    <Generator>TextTemplatingFileGenerator</Generator>
+	    <LastGenOutput>CsvFieldReader.cs</LastGenOutput>
+	  </None>
+	  <None Update="CsvParser.tt">
+	    <Generator>TextTemplatingFileGenerator</Generator>
+	    <LastGenOutput>CsvParser.cs</LastGenOutput>
+	  </None>
+	  <None Update="T4Methods.tt">
+	    <Generator>TextTemplatingFileGenerator</Generator>
+	    <LastGenOutput>T4Methods.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="CsvFieldReader.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>CsvFieldReader.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="CsvParser.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>CsvParser.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="T4Methods.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>T4Methods.tt</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+</Project>
