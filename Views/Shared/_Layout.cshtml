@@ -1,4 +1,8 @@
 ﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 <html>
 <head>
     <meta charset="utf-8" />
@@ -31,6 +35,12 @@
                     @if (User.IsInRole("Administrator")){
                     <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>}
                     <li><a asp-area="" asp-controller="Laptop" asp-action="Index">Show all products</a></li>
+                    <!-- @if (User.IsInRole("Administrator")){
+                    <li><a asp-area="" asp-controller="Cart" asp-action="" asp-route-id="@UserManager.GetUserId(User)" >Cart</a></li>} -->
+                    @if (User.IsInRole("Administrator")){
+                    <li><a asp-area="" asp-controller="Cart" asp-action="Index3" asp-route-id="@UserManager.GetUserId(User)">Cart</a></li>}
+                    @if (User.IsInRole("Administrator")){
+                    <li><a asp-area="" asp-controller="Wishlist" asp-action="Index2" asp-route-id="@UserManager.GetUserId(User)">Wish List</a></li>}
                     <!-- <li>@using (Html.BeginForm()) {<p><center>@Html.TextBox("SearchString") <input type="submit" value="Search" /></center></p>}</li> -->
                     <!-- <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li> -->

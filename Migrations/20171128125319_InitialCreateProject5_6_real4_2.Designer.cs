@@ -11,9 +11,10 @@ using System;
 namespace project5_6.Migrations
 {
     [DbContext(typeof(WebContext))]
-    partial class WebContextModelSnapshot : ModelSnapshot
+    [Migration("20171128125319_InitialCreateProject5_6_real4_2")]
+    partial class InitialCreateProject5_6_real4_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

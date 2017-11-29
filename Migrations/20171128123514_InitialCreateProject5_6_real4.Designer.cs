@@ -11,9 +11,10 @@ using System;
 namespace project5_6.Migrations
 {
     [DbContext(typeof(WebContext))]
-    partial class WebContextModelSnapshot : ModelSnapshot
+    [Migration("20171128123514_InitialCreateProject5_6_real4")]
+    partial class InitialCreateProject5_6_real4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -307,28 +308,6 @@ namespace project5_6.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("SubCategory");
-                });
-
-            modelBuilder.Entity("project5_6.Models.Wishlist", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("brand");
-
-                    b.Property<string>("description");
-
-                    b.Property<string>("model_name");
-
-                    b.Property<int>("price");
-
-                    b.Property<int>("product_id");
-
-                    b.Property<string>("user_id");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Wishlist");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

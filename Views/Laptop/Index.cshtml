@@ -1,5 +1,8 @@
 @model IEnumerable<project5_6.Models.Laptop>
 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -11,8 +14,10 @@
 } -->
 
 @using (Html.BeginForm()) {
-    <text>ProductBrand: </text>@Html.DropDownList("SearchString", new SelectList(ViewBag.Laptop), string.Empty)
-    <input type="submit" value="Search"/>
+    <text>Filters: </text>@Html.DropDownList("SearchString", new SelectList(ViewBag.Laptop), string.Empty)
+    @Html.DropDownList("SearchString2", new SelectList(ViewBag.Processor), string.Empty)
+    @Html.RadioButton("hdmi", "hdmi", "true")<span>HDMI</span>
+    <input type="submit" value="Filter"/>
 }
 
 <br>
@@ -32,7 +37,13 @@
                         &bull; @Html.DisplayFor(modelItem => item.processor)<br>
                         &bull; @Html.DisplayFor(modelItem => item.main_storage) @Html.DisplayFor(modelItem => item.main_storage_type)<br>
                         &bull; @Html.DisplayFor(modelItem => item.graphic_card)<br><br>
-                        &euro; @Html.DisplayFor(modelItem => item.price) </td></tr>
+                        &euro; @Html.DisplayFor(modelItem => item.price) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.ActionLink("Add to cart","Create2",new {image_id = @item.Id, brand = @item.brand, model_name = @item.model_name, price = @item.price, user_id = @UserManager.GetUserId(User)})
+                    |   @Html.ActionLink("Add to wishlist","Create3",new {image_id = @item.Id, brand = @item.brand, model_name = @item.model_name, price = @item.price, user_id = @UserManager.GetUserId(User)})
+                    		<br>
+                            <br>
+                            @if (User.IsInRole("Administrator")){
+                            <li><a asp-area="" asp-controller="Laptop" asp-action="Edit" asp-route-id="@item.Id">Edit product</a></li>}
                     </tbody>
 				</table>
             </div>    
