@@ -22,7 +22,7 @@ namespace project5_6.Controllers
         public HomeController(WebContext context)
         {
             _context = context;
-            insertdata();
+            //insertdata();
         }
         public void insertdata()
         {
