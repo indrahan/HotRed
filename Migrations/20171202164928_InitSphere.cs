@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace project5_6.Migrations
 {
-    public partial class InitialCreateProject5_6_real : Migration
+    public partial class InitSphere : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,26 @@ namespace project5_6.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cart",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int4", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    brand = table.Column<string>(type: "text", nullable: true),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    model_name = table.Column<string>(type: "text", nullable: true),
+                    order_no = table.Column<int>(type: "int4", nullable: false),
+                    price = table.Column<int>(type: "int4", nullable: false),
+                    product_id = table.Column<int>(type: "int4", nullable: false),
+                    quantity = table.Column<int>(type: "int4", nullable: false),
+                    user_id = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cart", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
@@ -59,6 +79,59 @@ namespace project5_6.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Laptop",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int4", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    brand = table.Column<string>(type: "text", nullable: true),
+                    category = table.Column<string>(type: "text", nullable: true),
+                    date_added = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    dvd_drive = table.Column<bool>(type: "bool", nullable: false),
+                    extra_storage = table.Column<bool>(type: "bool", nullable: false),
+                    graphic_card = table.Column<string>(type: "text", nullable: true),
+                    hdmi = table.Column<bool>(type: "bool", nullable: false),
+                    image_id = table.Column<int>(type: "int4", nullable: false),
+                    keyboard_layout = table.Column<string>(type: "text", nullable: true),
+                    main_storage = table.Column<int>(type: "int4", nullable: false),
+                    main_storage_type = table.Column<string>(type: "text", nullable: true),
+                    model_name = table.Column<string>(type: "text", nullable: true),
+                    operating_system = table.Column<string>(type: "text", nullable: true),
+                    panel_type = table.Column<string>(type: "text", nullable: true),
+                    price = table.Column<float>(type: "float4", nullable: false),
+                    processor = table.Column<string>(type: "text", nullable: true),
+                    ram = table.Column<int>(type: "int4", nullable: false),
+                    recommended_purpose = table.Column<string>(type: "text", nullable: true),
+                    screen_size = table.Column<float>(type: "float4", nullable: false),
+                    staff_picked = table.Column<bool>(type: "bool", nullable: false),
+                    touchscreen = table.Column<bool>(type: "bool", nullable: false),
+                    webcam = table.Column<bool>(type: "bool", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Laptop", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Wishlist",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int4", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    brand = table.Column<string>(type: "text", nullable: true),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    model_name = table.Column<string>(type: "text", nullable: true),
+                    price = table.Column<int>(type: "int4", nullable: false),
+                    product_id = table.Column<int>(type: "int4", nullable: false),
+                    user_id = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wishlist", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -276,7 +349,16 @@ namespace project5_6.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Cart");
+
+            migrationBuilder.DropTable(
+                name: "Laptop");
+
+            migrationBuilder.DropTable(
                 name: "Product");
+
+            migrationBuilder.DropTable(
+                name: "Wishlist");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

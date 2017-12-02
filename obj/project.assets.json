@@ -13162,11 +13162,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\xIndr\\Documents\\GitHub\\HotRed\\project5_6.csproj",
+      "projectUniqueName": "C:\\Users\\xIndr\\Documents\\GitHub\\HotRed\\project5_6.csproj",
       "projectName": "project5_6",
-      "projectPath": "c:\\Users\\xIndr\\Documents\\GitHub\\HotRed\\project5_6.csproj",
+      "projectPath": "C:\\Users\\xIndr\\Documents\\GitHub\\HotRed\\project5_6.csproj",
       "packagesPath": "C:\\Users\\xIndr\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\xIndr\\Documents\\GitHub\\HotRed\\obj\\",
+      "outputPath": "C:\\Users\\xIndr\\Documents\\GitHub\\HotRed\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
