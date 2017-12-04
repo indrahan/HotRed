@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "092986a50a1c83efbcda3673a597371ba77780a5"
+    "signature": "3036ef436faaca8e2317223f22975a65fb5f1779"
   },
   "compilationOptions": {
     "defines": [
@@ -27,6 +27,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
+          "Mvc2": "2.0.1",
           "Newtonsoft.Json": "10.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.0.0"
         },
@@ -2445,6 +2446,16 @@
         },
         "compile": {
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+        }
+      },
+      "Mvc2/2.0.1": {
+        "runtime": {
+          "lib/net35/System.Web.Abstractions.dll": {},
+          "lib/net35/System.Web.Mvc.dll": {}
+        },
+        "compile": {
+          "lib/net35/System.Web.Abstractions.dll": {},
+          "lib/net35/System.Web.Mvc.dll": {}
         }
       },
       "Newtonsoft.Json/10.0.3": {
@@ -5450,6 +5461,13 @@
       "sha512": "sha512-dA36TlNVn/XfrZtmf0fiI/z1nd3Wfp2QVzTdj26pqgP9LFWq0i1hYEUAW50xUjGFYn1+/cP3KGuxT2Yn1OUNBQ==",
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
+    },
+    "Mvc2/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x7g3iO0SQVfwmpCWRzGoRJdgjVlGoJF+XqQ/6iYJ08wkvyEf7G8NF8zY4NquIB+0/ZPUc1EUjxdwlYZcbitMVg==",
+      "path": "mvc2/2.0.1",
+      "hashPath": "mvc2.2.0.1.nupkg.sha512"
     },
     "Newtonsoft.Json/10.0.3": {
       "type": "package",

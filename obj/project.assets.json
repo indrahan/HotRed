@@ -2806,6 +2806,17 @@
           }
         }
       },
+      "Mvc2/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net35/System.Web.Abstractions.dll": {},
+          "lib/net35/System.Web.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net35/System.Web.Abstractions.dll": {},
+          "lib/net35/System.Web.Mvc.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -7833,6 +7844,17 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Mvc2/2.0.1": {
+      "sha512": "x7g3iO0SQVfwmpCWRzGoRJdgjVlGoJF+XqQ/6iYJ08wkvyEf7G8NF8zY4NquIB+0/ZPUc1EUjxdwlYZcbitMVg==",
+      "type": "package",
+      "path": "mvc2/2.0.1",
+      "files": [
+        "lib/net35/System.Web.Abstractions.dll",
+        "lib/net35/System.Web.Mvc.dll",
+        "mvc2.2.0.1.nupkg.sha512",
+        "mvc2.nuspec"
       ]
     },
     "NETStandard.Library/2.0.0": {
@@ -13151,6 +13173,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
+      "Mvc2 >= 2.0.1",
       "Newtonsoft.Json >= 10.0.3",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 2.0.0"
     ]
@@ -13220,6 +13243,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "2.0.0"
+          },
+          "Mvc2": {
+            "target": "Package",
+            "version": "2.0.1"
           }
         },
         "imports": [
@@ -13229,5 +13256,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Mvc2 2.0.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Mvc2",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

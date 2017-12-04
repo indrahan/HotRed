@@ -11,6 +11,7 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
+using System.Web;
 
 
 namespace project5_6.Controllers
@@ -24,6 +25,7 @@ namespace project5_6.Controllers
             _context = context;
             //insertdata();
         }
+
         public void insertdata()
         {
             var file = "HP.csv";
